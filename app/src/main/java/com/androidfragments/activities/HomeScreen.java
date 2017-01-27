@@ -14,6 +14,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.androidfragments.R;
 import com.androidfragments.fragments.ItemFragment;
@@ -23,7 +25,7 @@ public class HomeScreen extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
-
+    private TextView txt_notification;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +41,7 @@ public class HomeScreen extends AppCompatActivity
     private void createViews() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        txt_notification=(TextView)findViewById(R.id.txt_notification);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -106,6 +109,7 @@ public class HomeScreen extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
+        txt_notification.setVisibility(View.GONE);
         int id = item.getItemId();
 
       switch (id){
@@ -118,7 +122,7 @@ public class HomeScreen extends AppCompatActivity
           case R.id.list_fragment:
               fragmentTransaction=fragmentManager.beginTransaction();
               ItemFragment itemFragment=new ItemFragment();
-              fragmentTransaction.add(R.id.content_home_screen,itemFragment,getString(R.string.web_fragment));
+              fragmentTransaction.add(R.id.content_home_screen,itemFragment,getString(R.string.list_fragment));
               break;
           case R.id.dialog_fragment:
               fragmentTransaction=fragmentManager.beginTransaction();

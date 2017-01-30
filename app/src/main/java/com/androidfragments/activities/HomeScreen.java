@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.androidfragments.R;
 import com.androidfragments.fragments.ItemFragment;
+import com.androidfragments.fragments.MyDialogFragment;
 import com.androidfragments.fragments.WebFragment;
 
 public class HomeScreen extends AppCompatActivity
@@ -126,7 +127,8 @@ public class HomeScreen extends AppCompatActivity
               break;
           case R.id.dialog_fragment:
               fragmentTransaction=fragmentManager.beginTransaction();
-             // Fragment webFragment=new WebFragment();
+              MyDialogFragment dialogFragment=new MyDialogFragment();
+              fragmentTransaction.add(R.id.content_home_screen,dialogFragment,getString(R.string.dialog_fragment));
               break;
           case R.id.pref_fragment:
               fragmentTransaction=fragmentManager.beginTransaction();

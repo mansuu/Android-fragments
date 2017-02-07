@@ -11,9 +11,7 @@
         <item
             android:id="@+id/dialog_fragment"
             android:title="@string/dialog_fragment" />
-        <item
-            android:id="@+id/pref_fragment"
-            android:title="@string/pref_fragment" />
+
     </group>
 <!--
     <item android:title="Communicate">

@@ -1,9 +1,7 @@
 package com.androidfragments.activities;
 
 
-import android.app.Fragment;
 import android.os.Bundle;
-
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -62,9 +60,16 @@ public class HomeScreen extends AppCompatActivity
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        //CLOSE IF DRAWER IS OPENED
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
+        }
+        // ON BACKMPRESS GO TO PREVIOUS VISIBLE FRAGMENT
+        else if(fragmentManager.getBackStackEntryCount()>0){
+            fragmentManager.popBackStackImmediate();
+
+        }
+        else {
             super.onBackPressed();
         }
     }
@@ -117,22 +122,19 @@ public class HomeScreen extends AppCompatActivity
           case R.id.web_fragment:
               fragmentTransaction=fragmentManager.beginTransaction();
               WebFragment webFragment=new WebFragment();
-              fragmentTransaction.add(R.id.content_home_screen,webFragment,getString(R.string.web_fragment));
-
+              fragmentTransaction.replace(R.id.content_home_screen,webFragment,getString(R.string.web_fragment));
               break;
           case R.id.list_fragment:
               fragmentTransaction=fragmentManager.beginTransaction();
               ItemFragment itemFragment=new ItemFragment();
-              fragmentTransaction.add(R.id.content_home_screen,itemFragment,getString(R.string.list_fragment));
+              fragmentTransaction.replace(R.id.content_home_screen,itemFragment,getString(R.string.list_fragment));
               break;
           case R.id.dialog_fragment:
               fragmentTransaction=fragmentManager.beginTransaction();
               MyDialogFragment dialogFragment=new MyDialogFragment();
-              fragmentTransaction.add(R.id.content_home_screen,dialogFragment,getString(R.string.dialog_fragment));
+              fragmentTransaction.replace(R.id.content_home_screen,dialogFragment,getString(R.string.dialog_fragment));
               break;
-          case R.id.pref_fragment:
-              fragmentTransaction=fragmentManager.beginTransaction();
-              break;
+
       }
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
@@ -140,4 +142,6 @@ public class HomeScreen extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
 }

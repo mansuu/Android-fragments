@@ -31,10 +31,6 @@ public class MyDialogFragment extends DialogFragment {
         return inflater.inflate(R.layout.fragment_my_dialog, container, false);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-
-    }
 }
 
 

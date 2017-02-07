@@ -10,6 +10,5 @@
     <string name="list_fragment">List Fragment</string>
     <string name="pref_fragment">Preference Fragment</string>
     <string name="add_fragment_from_navigation_drawer">Add Fragments from navigation drawer</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello Dialog fragment</string>
+
 </resources>
